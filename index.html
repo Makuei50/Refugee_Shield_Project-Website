@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Refugee Shield | Practical digital safety</title>
+<meta name="description" content="Digital safety skills, scam practice and anonymous reporting for displaced communities. A flagship initiative of Refuge To Reach Tech Hub.">
+<style>
+:root{--blue:#0F2C59;--teal:#007f73;--amber:#F39C12;--paper:#F8F9FA;--ink:#18324c}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5.5rem}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--paper);line-height:1.55}
+h1,h2,h3{margin:0;color:var(--blue);line-height:1.15}
+a{color:inherit}
+:focus-visible{outline:3px solid #c77800;outline-offset:3px}
+.shell{max-width:1200px;margin:auto;padding-inline:clamp(1rem,4vw,3rem)}
+section{padding-block:clamp(3.5rem,8vw,6rem)}
+.kicker{font-size:.85rem;font-weight:700;color:var(--teal);margin:0 0 .6rem}
+h2{font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.02em}
+.lead{max-width:42rem;margin:1rem 0 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3rem;padding:.7rem 1.3rem;border-radius:.7rem;font:700 1rem Arial,sans-serif;text-decoration:none;cursor:pointer;border:2px solid transparent}
+.btn.teal{background:var(--teal);color:#fff}.btn.navy{background:var(--blue);color:#fff}
+.btn.line{border-color:var(--blue);color:var(--blue);background:transparent}.btn.white{border-color:#fff;color:#fff}
+.btn:disabled{opacity:.6;cursor:wait}
+.card{background:#fff;border:1px solid #dce6eb;border-radius:1rem;padding:1.4rem}
+.grid{display:grid;gap:1.2rem;margin-top:2rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.tag{font-size:.85rem;font-weight:700;color:var(--teal)}
+.card h3{font-size:1.2rem;margin:.6rem 0}
+.card .btn{margin-top:auto}
+.card{display:flex;flex-direction:column}
+header{position:sticky;top:0;z-index:50;background:#fffffff2;border-bottom:1px solid #e2e8f0}
+.bar{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700;color:var(--blue);text-decoration:none}
+.logo{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:var(--blue)}
+nav{display:none;position:absolute;left:0;right:0;top:72px;background:#fff;padding:1rem;box-shadow:0 8px 20px #0002;flex-direction:column}
+nav.open{display:flex}nav a{padding:.6rem 0;text-decoration:none}nav a:hover{text-decoration:underline}
+#menu{width:44px;height:44px;border:1px solid #94a3b8;border-radius:8px;background:#fff;font-size:1.3rem}
+@media(min-width:1024px){#menu{display:none}nav{display:flex;position:static;flex-direction:row;align-items:center;gap:1.5rem;padding:0;box-shadow:none;background:none}}
+.hero{background:var(--blue);color:#fff;padding-block:clamp(3.5rem,9vw,6.5rem)}
+.hero .shell{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:800px){.hero .shell{grid-template-columns:1.4fr .6fr}}
+.hero h1{color:#fff;font-size:clamp(2.2rem,5.5vw,4.4rem);letter-spacing:-.03em;max-width:15em}
+.hero .kicker{color:#8de2d7}.hero p.sub{font-size:1.15rem;max-width:36rem;color:#e2ebf3;margin:1.2rem 0 2rem}
+.hero .row{display:flex;gap:.8rem;flex-wrap:wrap}
+.shield{display:grid;place-items:center;width:min(260px,70%);aspect-ratio:1;margin:auto;background:#fff;border-radius:34%}
+.alert{margin-top:2rem;border-left:8px solid var(--amber);background:#fff6e5;border-radius:1rem;padding:1.2rem 1.4rem;color:#442e11}
+.alert b{display:block;margin:.3rem 0}
+.alert .tagline{font-size:.85rem;font-weight:700;color:#754500}
+.alert button{margin-top:.8rem;border:1px solid #8b641d;background:none;border-radius:8px;padding:.5rem .9rem;font:700 .95rem Arial;color:#442e11;cursor:pointer}
+form.search{margin-top:1.5rem}
+.field{width:100%;min-height:3rem;border:1.5px solid #9aafbb;border-radius:.7rem;padding:.7rem;font:1rem Arial,sans-serif;background:#fff;color:#142d48}
+.field:focus{border-color:var(--teal)}
+label,legend{font-weight:700;display:block;margin-bottom:.4rem}
+.row2{display:flex;gap:.7rem;flex-wrap:wrap}.row2 .field{flex:1;min-width:200px}
+.alt{background:#edf5f4}.alt2{background:#eaf3f3}
+.panel{margin-top:1.5rem;max-width:46rem}
+.panel[hidden],[hidden]{display:none!important}
+.status{min-height:1.5rem;font-weight:700;margin:.8rem 0 0}
+.two{display:grid;gap:2.5rem}
+@media(min-width:1000px){.two{grid-template-columns:.85fr 1.15fr}}
+.trust{background:var(--blue);color:#fff;border-radius:.8rem;padding:1.1rem;font-weight:700;margin-top:1.5rem}
+.chan{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.chan label{display:flex;gap:.5rem;align-items:center;border:1px solid #cbd5e1;border-radius:.6rem;padding:.7rem;font-weight:400;margin:0}
+fieldset{border:0;padding:0;margin:0}
+.stats{background:var(--blue);color:#fff;border-radius:1rem;padding:1.5rem;display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-top:2rem}
+.stats b{display:block;font-size:1.8rem}
+.note{font-size:.9rem;margin-top:.6rem}
+footer{background:var(--blue);color:#fff;padding-block:3rem}
+footer .shell{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+footer h2,footer h3{color:#fff;font-size:1.2rem;margin-bottom:.6rem}footer p{color:#dce8f0;font-size:.95rem}
+footer a{color:#ffd78c}
+.skip{position:absolute;left:-999px}.skip:focus{left:.5rem;top:.5rem;background:#fff;padding:.7rem;z-index:100}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="shell bar">
+  <a class="brand" href="#top" aria-label="Refugee Shield, back to top">
+    <span class="logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span>Refugee Shield</a>
+  <button id="menu" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open navigation">☰</button>
+  <nav id="nav" aria-label="Main navigation">
+    <a href="#alerts">Threat alerts</a><a href="#training">Training</a><a href="#curriculum">Curriculum</a><a href="#community">Community</a>
+    <a class="btn teal" href="#report">Report safely</a>
+  </nav>
+</div></header>
+
+<main id="main">
+<section id="top" class="hero"><div class="shell">
+  <div>
+    <p class="kicker">A flagship initiative of Refuge To Reach Tech Hub</p>
+    <h1>Stay Safe Online. Protect Your Community from Scams.</h1>
+    <p class="sub">Empowering displaced communities and youth across Africa with practical digital safety skills, real-time threat alerts, and anonymous reporting.</p>
+    <div class="row"><a class="btn teal" href="#training">Practise scam scenarios</a><a class="btn white" href="#report">Report a scam anonymously</a></div>
+  </div>
+  <div class="shield" aria-hidden="true"><svg width="110" height="110" viewBox="0 0 24 24" fill="none" stroke="#007f73" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+</div></section>
+
+<section id="alerts"><div class="shell">
+  <p class="kicker">Pause. Check. Stay safe.</p>
+  <h2>Threat alerts &amp; quick checks</h2>
+  <p class="lead">Educational examples help you recognise warning signs. Never share passwords, identity documents, or other sensitive personal information here.</p>
+  <div id="alert" class="alert" role="region" aria-label="Educational threat alert">
+    <span class="tagline">Sample alert · educational example</span>
+    <b>ALERT: Fake UNHCR Resettlement Forms via WhatsApp - Do Not Pay Fees</b>
+    Official assistance should not require payment through an unverified message. Check with a trusted organisation directly.
+    <br><button id="dismiss" type="button">Dismiss</button>
+  </div>
+  <p id="dismissed" class="note" hidden>The sample alert is hidden. You can still search the educational example below.</p>
+  <form id="search" class="card search" style="margin-top:1.5rem" novalidate>
+    <label for="q">Check a suspicious phone number, link, or message</label>
+    <p id="qhelp" class="note" style="margin:0 0 .8rem">This searches the example on this page only. It cannot verify whether a number or link is safe. Do not paste private details.</p>
+    <div class="row2"><input id="q" class="field" type="search" autocomplete="off" placeholder="Try WhatsApp, UNHCR or fees" aria-describedby="qhelp">
+      <button class="btn navy" type="submit">Search alerts</button><button id="qclear" class="btn line" type="button">Clear</button></div>
+    <p id="qresult" class="status" role="status" aria-live="polite">Check the details before taking action.</p>
+  </form>
+</div></section>
+
+<section id="training" class="alt"><div class="shell">
+  <p class="kicker">Learn by trying</p>
+  <h2>Scam practice</h2>
+  <p class="lead">Practise a safe response. There is no score, no login, and no judgement.</p>
+  <div id="cards" class="grid"></div>
+  <div id="sc" class="card panel" hidden tabindex="-1">
+    <div class="row2" style="justify-content:space-between;align-items:start"><h3 id="sch"></h3><button id="scx" class="btn line" type="button" style="min-height:2.5rem">Close</button></div>
+    <p id="scq" style="font-size:1.1rem"></p>
+    <div class="row2"><button id="safe" class="btn line" type="button">Verify through a trusted source</button><button id="risky" class="btn line" type="button">Follow the message instructions</button></div>
+    <p id="scf" class="status" role="status" aria-live="polite"></p>
+  </div>
+</div></section>
+
+<section id="curriculum"><div class="shell">
+  <p class="kicker">Free learning pathway</p>
+  <h2>Refugee Shield curriculum</h2>
+  <div id="mods" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr))"></div>
+  <p class="note" style="margin-top:1.5rem">The facilitator guide (PDF) is coming soon. Explore the modules above in the meantime.</p>
+  <div id="mp" class="card panel" tabindex="-1" hidden><h3 id="mh"></h3><p id="mb"></p></div>
+</div></section>
+
+<section id="report" class="alt2"><div class="shell two">
+  <div>
+    <p class="kicker">You are in control</p>
+    <h2>Report a scam anonymously</h2>
+    <p class="lead" style="font-weight:700">Report fraud safely without sharing your personal identity or legal status.</p>
+    <div class="trust">No names. No legal-status questions. Practical support.</div>
+    <p class="note" style="margin-top:1.2rem">Describe the scam, not yourself. Do not include names, phone numbers, document numbers, passwords, or identifying details. Reports are not displayed to other visitors.</p>
+  </div>
+  <div class="card">
+    <form id="rf" novalidate style="display:grid;gap:1.2rem">
+      <div><label for="type">Scam type</label><select id="type" class="field"><option value="">Choose a type</option><option>Aid or resettlement</option><option>Scholarship or job</option><option>Mobile money</option><option>Other</option></select></div>
+      <fieldset><legend>Channel</legend><div class="chan">
+        <label><input type="radio" name="ch" value="WhatsApp"> WhatsApp</label><label><input type="radio" name="ch" value="Call"> Call</label>
+        <label><input type="radio" name="ch" value="SMS"> SMS</label><label><input type="radio" name="ch" value="Social Media"> Social Media</label></div></fieldset>
+      <div><label for="desc">Description</label><textarea id="desc" class="field" style="min-height:8rem" maxlength="1500" placeholder="What happened? Leave out personal details."></textarea></div>
+      <div><label for="shot">Optional screenshot</label><input id="shot" class="field" type="file" accept="image/png,image/jpeg,image/webp" style="height:auto">
+        <p class="note">The image file is not uploaded or stored. Only whether you selected a screenshot is recorded. Do not include sensitive details.</p></div>
+      <p id="rs" class="status" role="status" aria-live="polite"></p>
+      <button id="rb" class="btn teal" type="submit">Submit anonymous report</button>
+    </form>
+    <div id="ok" tabindex="-1" hidden>
+      <h3>Your report was submitted anonymously.</h3>
+      <p>Thank you. If you shared a password or payment details with a scammer, change your password and contact your payment provider through its official channel. You can also tell a trusted support organisation.</p>
+      <button id="again" class="btn line" type="button">Submit another report</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="community"><div class="shell">
+  <p class="kicker">Safer together</p>
+  <h2>Community champions</h2>
+  <p class="lead">Share reliable guidance with care. People who experience scams deserve support, not blame.</p>
+  <div class="grid">
+    <div class="card"><h3>Local tech hubs</h3><p>Community-led learning spaces can make digital safety advice easier to access and discuss.</p></div>
+    <div class="card"><h3>Youth ambassadors</h3><p>Young people can share simple verification habits with friends, family, and neighbours.</p></div>
+    <div class="card"><h3>Support without shame</h3><p>Listen first. Help someone secure their accounts and find trusted support without blaming them.</p></div>
+  </div>
+  <div class="stats"><div><b>3</b>Practice scenarios</div><div><b>5</b>Curriculum modules</div><div><b>1</b>Educational alert</div></div>
+  <p class="note">Illustrative page values, not live programme impact statistics.</p>
+  <button id="co" class="btn teal" type="button" aria-expanded="false" aria-controls="cp" style="margin-top:1.5rem">Become a community champion</button>
+  <div id="cp" class="card panel" hidden tabindex="-1"><h3>Start with one safe conversation</h3>
+    <p>Share a scenario with your group, practise checking messages through official channels, and remind others that being targeted by a scam is never their fault. No registration is needed to use these materials.</p>
+    <button id="cc" class="btn line" type="button">Close panel</button></div>
+</div></section>
+</main>
+
+<footer><div class="shell">
+  <div><h2>Refugee Shield</h2><p>A flagship initiative of Refuge To Reach Tech Hub.</p><a href="#top">Back to top ↑</a></div>
+  <div><h3>Support &amp; resources</h3>
+    <p><a href="https://www.unhcr.org/help/" target="_blank" rel="noopener noreferrer">UNHCR help: emergency contacts &amp; legal aid</a></p>
+    <p>If someone is in immediate danger, contact local emergency services.</p></div>
+  <div><h3>Languages</h3><p>Currently in English. Dinka, Nuer, Somali, Arabic and Swahili versions are planned.</p></div>
+  <div id="privacy" style="grid-column:1/-1;border-top:1px solid #ffffff4d;padding-top:1.2rem"><h3>Privacy policy</h3>
+    <p>Anonymous reports include the selected scam type, channel, description, whether a screenshot was selected, and the submission time. Screenshot files are not uploaded. Do not include identifying information. Submitted reports are not shown to visitors.</p></div>
+</div></footer>
+
+<script>
+// Set this to your form/backend URL (e.g. a Formspree or Google Apps Script endpoint) to enable reporting.
+const REPORT_ENDPOINT = "";
+const $ = id => document.getElementById(id);
+const GOOGLE_GAME = "https://bescamready.withgoogle.com/intl/en/play";
+
+const menu=$("menu"),nav=$("nav");
+menu.onclick=()=>{const o=nav.classList.toggle("open");menu.setAttribute("aria-expanded",o);menu.setAttribute("aria-label",o?"Close navigation":"Open navigation")};
+nav.querySelectorAll("a").forEach(a=>a.onclick=()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false")});
+
+$("dismiss").onclick=()=>{$("alert").hidden=true;$("dismissed").hidden=false};
+$("search").onsubmit=e=>{e.preventDefault();const q=$("q").value.trim().toLowerCase();
+  $("qresult").textContent=!q?"Enter a word or phrase to search the educational example."
+  :["alert","fake","unhcr","resettlement","forms","whatsapp","pay","fees"].some(t=>t.includes(q)||q.includes(t))
+  ?"Example match: Fake UNHCR Resettlement Forms via WhatsApp - Do Not Pay Fees. Check the details before taking action."
+  :"No matching alerts found. This does not mean a message is safe. Check the details before taking action."};
+$("qclear").onclick=()=>{$("q").value="";$("qresult").textContent="Check the details before taking action.";$("q").focus()};
+
+const S=[
+ {t:"Beginner · opportunity",h:"The Fake Scholarship",d:"A message promises a scholarship but asks for a registration fee first.",q:"A scholarship message asks for a fee before you can apply. What do you do?",s:"Good choice. Check the programme on an official website or with a trusted organisation. Do not pay an unexpected application fee.",r:"Pause before paying. A fee request in an unexpected message is a warning sign. Verify the programme independently first."},
+ {t:"Everyday · mobile money",h:"Mobile Money Security",d:"Someone claiming to be support asks for your mobile wallet PIN.",q:"A caller says they are support staff and need your mobile wallet PIN. What do you do?",s:"Good choice. End the call and contact your provider using its official number. Never share your PIN.",r:"Do not share your PIN. Real support staff should not ask for it. Contact your provider through an official channel."},
+ {t:"Beginner · links",h:"Unverified Aid Links",d:"A group chat shares a link offering immediate aid if you enter personal details.",q:"A group chat link promises aid if you enter personal details immediately. What do you do?",s:"Good choice. Look up the organisation independently and confirm the offer before opening the link or sharing details.",r:"Pause. Urgency and requests for personal details are warning signs. Verify the offer through a trusted source."}];
+let cur=0;
+$("cards").innerHTML=S.map((s,i)=>`<article class="card"><span class="tag">${s.t}</span><h3>${s.h}</h3><p>${s.d}</p><button class="btn navy" data-i="${i}" type="button">Start scenario</button></article>`).join("")
+ +`<article class="card"><span class="tag">External game · by Google</span><h3>Be Scam Ready</h3><p>A free browser game from Google and Filament Games. It runs on phones and computers with no login. Opens on Google’s site.</p><a class="btn teal" href="${GOOGLE_GAME}" target="_blank" rel="noopener noreferrer">Play Google’s game</a></article>`;
+$("cards").querySelectorAll("button[data-i]").forEach(b=>b.onclick=()=>{cur=+b.dataset.i;const p=$("sc");p.hidden=false;$("sch").textContent=S[cur].h;$("scq").textContent=S[cur].q;$("scf").textContent="";p.focus()});
+$("safe").onclick=()=>$("scf").textContent=S[cur].s;
+$("risky").onclick=()=>$("scf").textContent=S[cur].r;
+$("scx").onclick=()=>{$("sc").hidden=true};
+
+const M=[["Module 1: Understand","How scams work in displaced contexts","Scams often use urgency, promises of assistance, or official-looking messages. Take time to pause and check before responding."],
+["Module 2: Identify","Spotting red flags and fake agencies","Look for unexpected fees, requests for private information, unfamiliar links, and accounts that claim to represent an agency without verifiable contact details."],
+["Module 3: Prevent","Securing mobile wallets and passwords","Use a strong unique password, enable available account protections, and never share a mobile wallet PIN or one-time code."],
+["Module 4: Respond & Report","Immediate recovery steps","Stop contact, secure affected accounts, contact your payment provider through its official channel, and report the attempt without including identifying details."],
+["Module 5: Support","Empowering community champions","Listen without blame. Help someone find trusted services, check messages together, and respect their choice about what to share."]];
+$("mods").innerHTML=M.map((m,i)=>`<article class="card"><h3>${m[0]}</h3><p>${m[1]}</p><button class="btn line" data-m="${i}" type="button">View module</button></article>`).join("");
+$("mods").querySelectorAll("button").forEach(b=>b.onclick=()=>{const m=M[+b.dataset.m],p=$("mp");p.hidden=false;$("mh").textContent=m[0];$("mb").textContent=m[2];p.focus()});
+
+const rf=$("rf"),rs=$("rs"),rb=$("rb");
+rf.onsubmit=async e=>{e.preventDefault();
+  const type=$("type").value,ch=rf.querySelector("input[name=ch]:checked"),desc=$("desc").value.trim();
+  if(!type){rs.textContent="Choose a scam type.";return $("type").focus()}
+  if(!ch){rs.textContent="Choose a channel.";return}
+  if(!desc){rs.textContent="Add a short description without personal details.";return $("desc").focus()}
+  if(!REPORT_ENDPOINT){rs.textContent="Reporting is not connected yet. Nothing was sent.";return}
+  rb.disabled=true;rs.textContent="Submitting your anonymous report…";
+  try{
+    const r=await fetch(REPORT_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({scam_type:type,channel:ch.value,description:desc,has_screenshot:$("shot").files.length>0,submitted_at:new Date().toISOString()})});
+    if(!r.ok)throw 0;
+    rs.textContent="";rf.reset();rf.hidden=true;$("ok").hidden=false;$("ok").focus();
+  }catch(_){rs.textContent="We could not confirm your report was saved. Please check later before submitting again."}
+  finally{rb.disabled=false}};
+$("again").onclick=()=>{$("ok").hidden=true;rf.hidden=false;$("type").focus()};
+
+const co=$("co"),cp=$("cp");
+co.onclick=()=>{cp.hidden=false;co.setAttribute("aria-expanded","true");cp.focus()};
+$("cc").onclick=()=>{cp.hidden=true;co.setAttribute("aria-expanded","false");co.focus()};
+</script>
+</body>
+</html>
